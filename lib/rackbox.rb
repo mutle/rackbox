@@ -1,5 +1,11 @@
 $:.unshift File.dirname(__FILE__)
-%w( rubygems thin rackbox/rack_content_length_fix ).each {|lib| require lib }
+require 'rubygems'
+begin
+  require 'thin' # required for Rails pre Rails 2.3, as Thin has the Rack::Adapter::Rails
+rescue LoadError
+end
+require 'rack'
+require 'rackbox/rack_content_length_fix'
 
 # To add blackbox testing to a Rails app,
 # in your spec_helper.rb
@@ -23,9 +29,13 @@ class RackBox
     def app
       unless @app and @app.respond_to?:call
         if defined?RAILS_ENV and defined?RAILS_ROOT
+          raise "You need the Rack::Adapter::Rails to run Rails apps with RackBox." + 
+                " Try: sudo gem install thin" unless defined?Rack::Adapter::Rails
           @app = Rack::Adapter::Rails.new :root => RAILS_ROOT, :environment => RAILS_ENV
+        elsif File.file? 'config.ru'
+          @app = Rack::Builder.new { eval(File.read('config.ru')) }
         else
-          raise "RackBox.app not configured.  To configure implicitly, make sure RAILS_ROOT and RAILS_ENV are set."
+          raise "RackBox.app not configured."
         end
       end
       @app
@@ -81,8 +91,10 @@ if spec_configuration_class
 
             # include generated url methods, eg. login_path.
             # default_url_options needs to have a host set for the Urls to work
-            include ActionController::UrlWriter
-            default_url_options[:host] = 'example.com'
+            if defined?ActionController::UrlWriter
+              include ActionController::UrlWriter
+              default_url_options[:host] = 'example.com'
+            end
           }
         end
       end
