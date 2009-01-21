@@ -67,6 +67,8 @@ module RackBox::SpecHelpers
     options[:params] ||= { }
     Rack::MockRequest.new(RackBox.app).send options[:method], url, :input => Rack::Utils.build_query(options[:params])
   end
+
+  alias request req unless defined? request
 end
 
 spec_configuration_class = nil

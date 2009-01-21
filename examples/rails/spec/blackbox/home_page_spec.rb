@@ -4,6 +4,14 @@ describe 'Home Page' do
 
   it 'should say something by itself' do
     req( '/' ).body.should include('You said nothing')
+
+    # this works, but you should probably be careful using 
+    # 'request' and 'response' in Rails specs ... ?
+
+    request( '/' ).body.should include('You said nothing')
+
+    response = req( '/' )
+    response.body.should include('You said nothing')
   end
 
   it 'should say whatever I tell it to' do
