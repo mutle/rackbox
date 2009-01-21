@@ -1,0 +1,11 @@
+#! /bin/bash
+ROOT=$PWD
+echo ""
+for example in examples/*; do
+	cd $ROOT
+	cd $example
+	echo -e "Running Example: [\e[34m$example\e[37m]... "
+	echo ""
+	./run-specs
+	echo ""
+done
