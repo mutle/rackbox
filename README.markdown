@@ -8,8 +8,6 @@ This currently only works with [RSpec][].
 Installation
 ------------
 
-    **NOTE** I haven't built the gem yet!  This will work in a little while, once I build the gem ...
-
     $ sudo gem install remi-rackbox -s http://gems.github.com
 
 Rails
