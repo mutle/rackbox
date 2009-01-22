@@ -1,7 +1,7 @@
 Gem::Specification.new do |s|
 
   s.name = "rackbox"
-  s.version = "0.0.5"
+  s.version = "0.0.6"
   s.date = "2009-01-21"
   s.summary = "Merb-like BlackBox testing for Rack apps, including Rails"
   s.email = "remi@remitaylor.com"
