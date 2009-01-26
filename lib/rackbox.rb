@@ -1,3 +1,5 @@
+# TODO split up into different files!  sheesh!
+
 $:.unshift File.dirname(__FILE__)
 require 'rubygems'
 begin
@@ -6,6 +8,7 @@ rescue LoadError
 end
 require 'rack'
 require 'rackbox/rack_content_length_fix'
+require 'rackbox/rack_sticky_sessions'
 
 # To add blackbox testing to a Rails app,
 # in your spec_helper.rb
@@ -44,6 +47,10 @@ class RackBox
 end
 
 module RackBox::SpecHelpers
+  def self.included base
+
+  end
+
   # A port of Merb's request() method, used in tests
   #
   # At the moment, we're using #req instead because #request conflicts 
@@ -63,9 +70,9 @@ module RackBox::SpecHelpers
   #      req '/', :user_agent => 'some custom user agent'
   #
   def req url, options = {}
-    options[:method] ||= :get
+    options[:method] ||= (options[:params]) ? :post : :get # if params, default to POST, else default to GET
     options[:params] ||= { }
-    Rack::MockRequest.new(RackBox.app).send options[:method], url, :input => Rack::Utils.build_query(options[:params])
+    @rackbox_request.send options[:method], url, :input => Rack::Utils.build_query(options[:params])
   end
 
   alias request req unless defined? request
@@ -86,6 +93,7 @@ if spec_configuration_class
     #
     def use_blackbox= bool
       if bool == true
+        
         before(:all, :type => :blackbox) do
           self.class.instance_eval {
             # include our own helpers, eg. RackBox::SpecHelpers#req
@@ -97,8 +105,16 @@ if spec_configuration_class
               include ActionController::UrlWriter
               default_url_options[:host] = 'example.com'
             end
+
+            attr_accessor :rackbox_request
           }
         end
+
+        before(:each, :type => :blackbox) do
+          # each example should have a new request object
+          @rackbox_request = Rack::MockRequest.new RackBox.app
+        end
+
       end
     end
   end

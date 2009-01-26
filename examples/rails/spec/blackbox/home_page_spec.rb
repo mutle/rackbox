@@ -18,4 +18,12 @@ describe 'Home Page' do
     req( '/', :method => :post, :params => { :say => 'hello' } ).body.should include('You said hello')
   end
 
+  it 'should default to a POST if params are present' do
+    request('/print-method').body.should == 'get'
+    request('/print-method', :params => { :hi => 'there' }).body.should == 'post'
+    request('/print-method', :params => { :hi => 'there' }, :method => :post ).body.should == 'post'
+    request('/print-method', :params => { :hi => 'there' }, :method => :put ).body.should == 'put'
+    request('/print-method', :params => { :hi => 'there' }, :method => :get ).body.should == 'get'
+  end
+
 end
