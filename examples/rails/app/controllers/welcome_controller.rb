@@ -17,4 +17,12 @@ class WelcomeController < ApplicationController
     redirect_to params[:to]
   end
 
+  def some_text
+    render :text => "well hello there \n how goes it? \n does it go well?"
+  end
+
+  def some_html
+    # render template
+  end
+
 end

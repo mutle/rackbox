@@ -13,7 +13,7 @@ class Rack::MockResponse
   end
 
   def redirect?
-    self.status.to_s.start_with?'2' # 300 status codes are redirects
+    self.status.to_s.start_with?'3' # 300 status codes are redirects
   end
 
   def client_error?
