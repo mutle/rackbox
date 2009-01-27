@@ -46,7 +46,7 @@ private
   end
 end
 
-def matcher(name, &block)
+def matcher(name, context = self.class, &block)
   klass = CustomMatcher.create(name, &block)
-  self.class.send(:define_method, name) { |*args| klass.new(*args) }
+  context.send(:define_method, name) { |*args| klass.new(*args) }
 end

@@ -32,9 +32,7 @@ if spec_configuration_class
             include RackBox::SpecHelpers
             include RackBox::Matchers
 
-            def redirect_to *args
-              puts "REDIRECT TO ... the normal def ..."
-            end
+            puts "before :all ... redirect_to?   #{ (defined?(redirect_to)).inspect }"
 
             # include generated url methods, eg. login_path.
             # default_url_options needs to have a host set for the Urls to work
@@ -49,6 +47,25 @@ if spec_configuration_class
 
         before(:each, :type => :blackbox) do
           # each example should have a new request object
+          puts "1 before :each ... redirect_to?   #{ (defined?(redirect_to)).inspect }"
+          undef redirect_to if defined?redirect_to
+          puts "2 before :each ... redirect_to?   #{ (defined?(redirect_to)).inspect }"
+          #matcher(:redirect_to, self){|*args|
+          #  puts "REDIRECT TO MATCHER!"
+          #  true
+          #}
+          
+          (class << self; self; end).class_eval do 
+            #define_method( :redirect_to ){ |*args|
+            #  puts "REDIRECT TO!  (dynamic)"
+            #}
+            matcher(:redirect_to, self){|*args|
+              puts "!!! ~~ CALLED REDIRECT TO MATCHER ~~ !!! with: #{ args.inspect }"
+              true
+            }
+          end
+
+          puts "3 before :each ... redirect_to?   #{ (defined?(redirect_to)).inspect }"
           @rackbox_request = Rack::MockRequest.new RackBox.app
         end
 
