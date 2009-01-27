@@ -1,5 +1,3 @@
-puts "extending MockRequest"
-
 # some more Rack extensions to help when testing
 class Rack::MockResponse
 

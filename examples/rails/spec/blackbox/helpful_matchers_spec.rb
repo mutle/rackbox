@@ -2,15 +2,6 @@ require File.dirname(__FILE__) + '/../spec_helper'
 
 describe 'Helpful Matchers' do
 
-  before do
-    puts "BEFORE ... redirect_to defined?  ... #{ (defined?(redirect_to)).inspect }"
-  end
-
-  #matcher(:redirect_to) do |a,b|
-  #  puts "REDIRECT TO: #{a}, #{b}"
-  #  true
-  #end
-
   it 'response.should be_success' do
     request('/').should be_success
   end

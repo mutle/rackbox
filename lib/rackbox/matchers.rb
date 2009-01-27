@@ -1,17 +1,17 @@
 # Custom RSpec matchers
 module RackBox::Matchers
-
   def self.included base
-    puts "INCLUDED matchers INTO #{ base }"
-    base.instance_eval {
-      puts "inside of a base ... redirect_to? ... #{ (defined?(redirect_to)).inspect }"
-    }
-    #puts "base has methods ... #{ base.methods.grep(/redir/).inspect }"
+    
+    # this should really just be matcher(:foo){ ... }
+    # but there's a bit of other meta logic to deal with here
+    Object.send :remove_const, :RedirectTo if defined? RedirectTo
+    undef redirect_to if defined? redirect_to
+
+    # the actual matcher logic
+    matcher(:redirect_to, base) do |response, url|
+      return false unless response['Location']
+      response['Location'] == url
+    end
+
   end
-
-  #matcher(:redirect_to) do |response, url|
-  #  puts "REDIRECT TO!"
-  #  true
-  #end
-
 end
