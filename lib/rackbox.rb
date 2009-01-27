@@ -9,6 +9,8 @@ end
 require 'rack'
 require 'rackbox/rack_content_length_fix'
 require 'rackbox/rack_sticky_sessions'
+require 'rackbox/rack_extensions_for_rspec'
+require 'rackbox/custom_matcher'
 
 # To add blackbox testing to a Rails app,
 # in your spec_helper.rb
@@ -46,9 +48,16 @@ class RackBox
   end
 end
 
-module RackBox::SpecHelpers
-  def self.included base
+module RackBox::Matchers
+  matcher(:redirect_to) do |response, url|
+    puts "REDIRECT TO!"
+    true
+  end
+end
 
+module RackBox::SpecHelpers
+
+  def self.included base
   end
 
   # A port of Merb's request() method, used in tests
@@ -98,6 +107,11 @@ if spec_configuration_class
           self.class.instance_eval {
             # include our own helpers, eg. RackBox::SpecHelpers#req
             include RackBox::SpecHelpers
+            include RackBox::Matchers
+
+            def redirect_to *args
+              puts "REDIRECT TO ... the normal def ..."
+            end
 
             # include generated url methods, eg. login_path.
             # default_url_options needs to have a host set for the Urls to work

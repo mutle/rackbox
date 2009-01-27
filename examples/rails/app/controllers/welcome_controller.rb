@@ -13,4 +13,8 @@ class WelcomeController < ApplicationController
     render :text => session[:session_variable].to_s
   end
 
+  def redirect
+    redirect_to params[:to]
+  end
+
 end
