@@ -1,17 +1,29 @@
+# -*- encoding: utf-8 -*-
+
 Gem::Specification.new do |s|
+  s.name = %q{rackbox}
+  s.version = "0.7.0"
 
-  s.name = "rackbox"
-  s.version = "0.0.6"
-  s.date = "2009-01-21"
-  s.summary = "Merb-like BlackBox testing for Rack apps, including Rails"
-  s.email = "remi@remitaylor.com"
-  s.homepage = "http://github.com/remi/rackbox"
-  s.description = "Merb-like BlackBox testing for Rack apps, including Rails"
+  s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
+  s.authors = ["remi"]
+  s.date = %q{2009-01-27}
+  s.description = %q{Merb-like BlackBox testing for Rack apps, including Rails}
+  s.email = %q{remi@remitaylor.com}
+  s.files = ["VERSION.yml", "README.markdown", "lib/rackbox.rb", "lib/rspec", "lib/rspec/custom_matcher.rb", "lib/rackbox", "lib/rackbox/rack", "lib/rackbox/rack/extensions_for_rspec.rb", "lib/rackbox/rack/sticky_sessions.rb", "lib/rackbox/rack/content_length_fix.rb", "lib/rackbox/spec", "lib/rackbox/spec/configuration.rb", "lib/rackbox/spec/helpers.rb", "lib/rackbox/rackbox.rb", "lib/rackbox/matchers.rb"]
   s.has_rdoc = true
-  s.rdoc_options = ["--quiet", "--title", "RackBox - Merb-like BlackBox testing for Rack apps", "--opname", "index.html", "--line-numbers", "--main", "RackBox", "--inline-source"]
-  s.authors = ["remi Taylor"]
+  s.homepage = %q{http://github.com/remi/rackbox}
+  s.rdoc_options = ["--inline-source", "--charset=UTF-8"]
+  s.require_paths = ["lib"]
+  s.rubygems_version = %q{1.3.1}
+  s.summary = %q{Merb-like BlackBox testing for Rack apps, including Rails}
 
-  # generate using: $ ruby -e "puts Dir['**/**'].select{|x| File.file?x}.inspect" ... remember to set paste!
-  s.files = ["examples/rack/config.ru", "examples/rack/run-specs", "examples/rack/spec/spec.opts", "examples/rack/spec/spec_helper.rb", "examples/rack/spec/blackbox/home_page_spec.rb", "examples/rack/spec/rcov.opts", "examples/rails/app/controllers/application.rb", "examples/rails/app/controllers/welcome_controller.rb", "examples/rails/app/helpers/application_helper.rb", "examples/rails/app/helpers/welcome_helper.rb", "examples/rails/lib/tasks/rspec.rake", "examples/rails/db/test.sqlite3", "examples/rails/db/development.sqlite3", "examples/rails/db/schema.rb", "examples/rails/log/test.log", "examples/rails/log/development.log", "examples/rails/log/production.log", "examples/rails/log/server.log", "examples/rails/run-specs", "examples/rails/spec/spec.opts", "examples/rails/spec/spec_helper.rb", "examples/rails/spec/blackbox/home_page_spec.rb", "examples/rails/spec/rcov.opts", "examples/rails/doc/README_FOR_APP", "examples/rails/public/dispatch.cgi", "examples/rails/public/dispatch.rb", "examples/rails/public/422.html", "examples/rails/public/images/rails.png", "examples/rails/public/404.html", "examples/rails/public/500.html", "examples/rails/public/robots.txt", "examples/rails/public/favicon.ico", "examples/rails/public/javascripts/prototype.js", "examples/rails/public/javascripts/application.js", "examples/rails/public/javascripts/dragdrop.js", "examples/rails/public/javascripts/controls.js", "examples/rails/public/javascripts/effects.js", "examples/rails/public/dispatch.fcgi", "examples/rails/test/test_helper.rb", "examples/rails/test/functional/welcome_controller_test.rb", "examples/rails/test/performance/browsing_test.rb", "examples/rails/Rakefile", "examples/rails/script/spec_server", "examples/rails/script/autospec", "examples/rails/script/destroy", "examples/rails/script/dbconsole", "examples/rails/script/performance/profiler", "examples/rails/script/performance/request", "examples/rails/script/performance/benchmarker", "examples/rails/script/generate", "examples/rails/script/process/reaper", "examples/rails/script/process/inspector", "examples/rails/script/process/spawner", "examples/rails/script/spec", "examples/rails/script/console", "examples/rails/script/runner", "examples/rails/script/server", "examples/rails/script/plugin", "examples/rails/script/about", "examples/rails/README", "examples/rails/config/boot.rb", "examples/rails/config/locales/en.yml", "examples/rails/config/environments/development.rb", "examples/rails/config/environments/test.rb", "examples/rails/config/environments/production.rb", "examples/rails/config/routes.rb", "examples/rails/config/database.yml", "examples/rails/config/environment.rb", "examples/rails/config/initializers/new_rails_defaults.rb", "examples/rails/config/initializers/mime_types.rb", "examples/rails/config/initializers/inflections.rb", "lib/rackbox/rack_content_length_fix.rb", "lib/rackbox.rb", "README.markdown", "run-specs", "rackbox.gemspec"]
+  if s.respond_to? :specification_version then
+    current_version = Gem::Specification::CURRENT_SPECIFICATION_VERSION
+    s.specification_version = 2
 
+    if Gem::Version.new(Gem::RubyGemsVersion) >= Gem::Version.new('1.2.0') then
+    else
+    end
+  else
+  end
 end
