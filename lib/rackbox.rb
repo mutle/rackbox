@@ -18,5 +18,5 @@ require 'rackbox/rackbox'
 require 'rackbox/custom_matcher'
 require 'rackbox/matchers'
 
-require 'rackbox/spec_helpers'
-require 'rackbox/spec_configuration'
+require 'rackbox/spec/helpers'
+require 'rackbox/spec/configuration'
