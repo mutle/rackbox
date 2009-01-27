@@ -15,7 +15,7 @@ require 'rackbox/rack/extensions_for_rspec'
 
 require 'rackbox/rackbox'
 
-require 'rackbox/custom_matcher'
+require 'rspec/custom_matcher'
 require 'rackbox/matchers'
 
 require 'rackbox/spec/helpers'
