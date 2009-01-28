@@ -1,6 +1,8 @@
 # some more Rack extensions to help when testing
 class Rack::MockResponse
 
+  # TODO checkout Rack::Response::Helpers which implements many of these!
+
   # these methods help with RSpec specs so we can ask things like:
   #
   #   request('/').should be_successful
