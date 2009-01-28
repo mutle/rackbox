@@ -25,4 +25,8 @@ class WelcomeController < ApplicationController
     # render template
   end
 
+  def relative
+    redirect_to '/i_am_relative'
+  end
+
 end

@@ -14,6 +14,11 @@ describe 'Helpful Matchers' do
     request('/redirect?to=http://www.google.com').should redirect_to('http://www.google.com')
   end
 
+  it 'relative redirect to should work' do
+    request('/relative').should be_redirect
+    request('/relative').should redirect_to('/i_am_relative')
+  end
+
   it 'response.should have_text("")' do
     request('/some_text').body.should include_text('how goes it?')
     request('/some_text').body.should include('how goes it?')
