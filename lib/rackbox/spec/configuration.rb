@@ -39,6 +39,17 @@ if spec_configuration_class
               default_url_options[:host] = 'example.com'
             end
 
+            # if we're not in a Rails app, let's try to load matchers from Webrat
+            unless defined?RAILS_ENV
+              begin
+                require 'webrat'
+                require 'webrat/core/matchers'
+                include Webrat::HaveTagMatcher
+              rescue LoadError
+                puts "Webrat not available.  have_tag & other matchers won't be available.  to install, sudo gem install webrat"
+              end
+            end
+
             attr_accessor :rackbox_request
           }
         end
