@@ -26,7 +26,7 @@ module RackBox::SpecHelpers
   def req url, options = {}
     options[:method] ||= (options[:params]) ? :post : :get # if params, default to POST, else default to GET
     options[:params] ||= { }
-    @rackbox_request.send options[:method], url, :input => Rack::Utils.build_query(options[:params])
+    @rackbox_request.send options[:method], url, :input => RackBox.build_query(options[:params])
   end
 
   alias request req unless defined? request
