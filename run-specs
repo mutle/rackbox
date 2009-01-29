@@ -1,8 +1,14 @@
 #! /bin/bash
 ROOT=$PWD
+
 echo ""
+echo -e "Running: [\e[34mRackBox specs\e[37m]... "
+echo ""
+spec -c spec/*_spec.rb
+echo ""
+
 for example in examples/*; do
-	cd $ROOT
+	cd $ROOT	
 	cd $example
 	echo -e "Running Example: [\e[34m$example\e[37m]... "
 	echo ""
