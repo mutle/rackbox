@@ -10,11 +10,14 @@ Installation
 
     $ sudo gem install remi-rackbox -s http://gems.github.com
 
+NOTE: right now, [RackBox][] requires [thin][].  Soon, I'll likely remove [thin][] as 
+a dependency and will only require [rack][].
+
 Rails (fast!)
 -------------
 
+    $ sudo gem install rspec rspec-rails thin
     $ sudo gem install remi-rackbox -s http://gems.github.com
-    $ sudo gem install rspec rspec-rails
 
     $ rails new_app
     $ cd new_app
@@ -53,6 +56,10 @@ Also, add `require 'rackbox'` to the top of your `spec_helper.rb`
 
 You can see a working example of blackbox testing a [Rack][] application here: [examples/rack](http://github.com/remi/rackbox/tree/master/examples/rack)
 
+NOTE: If you want to be able to use nice RSpec matchers like `request('/').should have_tag('p')` in your 
+blackbox specs in your [Rack][] apps, you should `sudo gem install webrat` and [RackBox][] will include 
+[Webrat][]'s helpers in your specs.
+
 Usage
 -----
 
@@ -82,3 +89,5 @@ on how things work in [Merb][] so I can duplicate any functionality I'm missing.
 [rack]:     http://rack.rubyforge.org
 [rails]:    http://rubyonrails.org
 [rspec]:    http://rspec.info
+[webrat]:   http://github.com/brynary/webrat
+[thin]:     http://code.macournoyer.com/thin
