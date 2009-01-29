@@ -82,6 +82,11 @@ on how things work in [Merb][] so I can duplicate any functionality I'm missing.
 `request` gives you a [`Rack::Response`](http://rack.rubyforge.org/doc/classes/Rack/Response.html) which has 
 `body`, `headers`, `status` methods ([and more](http://rack.rubyforge.org/doc/classes/Rack/Response.html))
 
+TODO
+----
+
+ - get usage documentation working for `./script/generate blackbox_spec`
+
 
 
 [rackbox]:  http://github.com/remi/rackbox
