@@ -10,8 +10,22 @@ Installation
 
     $ sudo gem install remi-rackbox -s http://gems.github.com
 
-Rails
------
+Rails (fast!)
+-------------
+
+    $ sudo gem install remi-rackbox -s http://gems.github.com
+    $ sudo gem install rspec rspec-rails
+
+    $ rails new_app
+    $ cd new_app
+    $ ./script/generate rspec
+    $ ./script/generate blackbox_spec Home Page
+
+    $ rake spec
+    
+
+Rails (manual)
+--------------
 
 To write [RackBox][] tests in [Rails][] apps, make a `blackbox` directory under your `spec` directory 
 and add this to the Spec configure block in your `spec_helper.rb` file:
