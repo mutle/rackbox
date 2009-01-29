@@ -1,6 +1,10 @@
 require File.dirname(__FILE__) + '/../spec_helper'
 
+require 'webrat'
+require 'webrat/core/matchers'
+
 describe 'Helpful Matchers' do
+  include Webrat::HaveTagMatcher
 
   it 'response.should be_success' do
     request('/').should be_success
@@ -20,10 +24,10 @@ describe 'Helpful Matchers' do
   end
 
   it 'response.should have_text("")' do
-    request('/some_text').body.should include_text('how goes it?')
+  #  request('/some_text').body.should include_text('how goes it?')
     request('/some_text').body.should include('how goes it?')
 
-    request('/some_text').body.should_not include_text('how goesss it?')
+  #  request('/some_text').body.should_not include_text('how goesss it?')
     request('/some_text').body.should_not include('how goesss it?')
   end
 

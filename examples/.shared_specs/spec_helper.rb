@@ -7,10 +7,13 @@ rescue LoadError
 end
 
 require 'spec'
-require 'spec/rails' if defined?RAILS_ENV
+
+if defined? RAILS_ENV
+  require 'spec/rails' if defined?RAILS_ENV
+end
 
 require File.expand_path(File.dirname(__FILE__) + "/../../../lib/rackbox")
 
 Spec::Runner.configure do |config|
-  config.use_blackbox = true
+  config.use_blackbox = true # more options for ... webrat, etc?
 end
