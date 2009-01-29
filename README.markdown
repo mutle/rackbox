@@ -98,6 +98,9 @@ on how things work in [Merb][] so I can duplicate any functionality I'm missing.
 TODO
 ----
 
+ - request('/', :data => 'some XML or something')
+ - request('/', :format => :json)          # simple helpers for content type request accepts
+ - request('/', 'Content-Length' => 'x')   # anything passed in that we don't handle, throw into the request ENV ... but :content_length should work too?
  - get usage documentation working for `./script/generate blackbox_spec`
 
 
