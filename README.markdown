@@ -1,9 +1,22 @@
 RackBox
 =======
 
-[RackBox][] adds [Merb][]-style blackbox testing to [Rack][] apps (including [Rails][])
+[RackBox][] adds [Merb][]-style [blackbox testing][blackbox] to [Rack][] apps (including [Rails][])
 
 This currently only works with [RSpec][].
+
+Screencast
+----------
+
+I decided to ramble for awhile and, for some crazy reason, record it. 
+
+If you watch this, I walk through the process of adding [RackBox][] 
+to a fresh [Rails][] app and writing [blackbox][] specs using it.
+
+I also cover, to some extent, how you can use [RackBox][] with 
+other [Rack][] (or [Sinatra][] or ...) based apps.
+
+[Download the 'Screencast'][screencast]
 
 Installation
 ------------
@@ -89,10 +102,14 @@ TODO
 
 
 
-[rackbox]:  http://github.com/remi/rackbox
-[merb]:     http://merbivore.com
-[rack]:     http://rack.rubyforge.org
-[rails]:    http://rubyonrails.org
-[rspec]:    http://rspec.info
-[webrat]:   http://github.com/brynary/webrat
-[thin]:     http://code.macournoyer.com/thin
+[rackbox]:    http://github.com/remi/rackbox
+[merb]:       http://merbivore.com
+[rack]:       http://rack.rubyforge.org
+[rails]:      http://rubyonrails.org
+[rspec]:      http://rspec.info
+[webrat]:     http://github.com/brynary/webrat
+[thin]:       http://code.macournoyer.com/thin
+[screencast]: http://s3.amazonaws.com/remicasts/rackbox.avi.zip
+[rubygem]:    http://www.rubygems.org
+[blackbox]:   http://en.wikipedia.org/wiki/Black_box_testing
+[sinatra]:    http://sinatra.github.com
