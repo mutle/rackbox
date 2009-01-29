@@ -66,8 +66,7 @@ TODO
 
 Before I make a screencast and post it to my blog, I wanna finish these ...
 
- - support :params => { :user => { :name => 'bob', :groups => { :a => 'X', :b => 'Y' } } } ...
- - support Webrat's have\_xpath, have\_selector, etc
+ - add a rails generator so you can install the gem and then ./script/generate blackbox\_spec
 
 
 [rackbox]:  http://github.com/remi/rackbox
