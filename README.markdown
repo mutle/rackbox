@@ -61,6 +61,13 @@ on how things work in [Merb][] so I can duplicate any functionality I'm missing.
 `request` gives you a [`Rack::Response`](http://rack.rubyforge.org/doc/classes/Rack/Response.html) which has 
 `body`, `headers`, `status` methods ([and more](http://rack.rubyforge.org/doc/classes/Rack/Response.html))
 
+TODO
+----
+
+Before I make a screencast and post it to my blog, I wanna finish these ...
+
+ - support :params => { :user => { :name => 'bob', :groups => { :a => 'X', :b => 'Y' } } } ...
+ - support Webrat's have\_xpath, have\_selector, etc
 
 
 [rackbox]:  http://github.com/remi/rackbox
