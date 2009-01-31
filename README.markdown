@@ -8,15 +8,7 @@ This currently only works with [RSpec][].
 Screencast
 ----------
 
-I decided to ramble for awhile and, for some crazy reason, record it. 
-
-If you watch this, I walk through the process of adding [RackBox][] 
-to a fresh [Rails][] app and writing [blackbox][] specs using it.
-
-I also cover, to some extent, how you can use [RackBox][] with 
-other [Rack][] (or [Sinatra][] or ...) based apps.
-
-[Download the 'Screencast'][screencast]
+[Watch the 'Screencast'][screencast]
 
 Installation
 ------------
@@ -112,7 +104,7 @@ TODO
 [rspec]:      http://rspec.info
 [webrat]:     http://github.com/brynary/webrat
 [thin]:       http://code.macournoyer.com/thin
-[screencast]: http://s3.amazonaws.com/remicasts/rackbox.avi.zip
+[screencast]: http://remi.org/2009/01/29/introducing-rackbox_merb-esque-blackbox-testing-for-rack-and-rails-apps.html
 [rubygem]:    http://www.rubygems.org
 [blackbox]:   http://en.wikipedia.org/wiki/Black_box_testing
 [sinatra]:    http://sinatra.github.com
