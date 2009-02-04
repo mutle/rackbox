@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>File: RDOC_README.rdoc</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href=".././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+  <div id="fileHeader">
+    <h1>RDOC_README.rdoc</h1>
+    <table class="header-table">
+    <tr class="top-aligned-row">
+      <td><strong>Path:</strong></td>
+      <td>RDOC_README.rdoc
+      </td>
+    </tr>
+    <tr class="top-aligned-row">
+      <td><strong>Last Update:</strong></td>
+      <td>Tue Feb 03 17:30:14 -0700 2009</td>
+    </tr>
+    </table>
+  </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+    <div id="description">
+      <h1><a href="../classes/RackBox.html">RackBox</a></h1>
+<p>
+<a href="../classes/RackBox.html">RackBox</a> adds Merb-style blackbox
+testing]blackbox] to <a href="../classes/Rack.html">Rack</a> apps
+(including Rails)
+</p>
+<p>
+This currently only works with RSpec.
+</p>
+<h2>Screencast</h2>
+<p>
+Watch the <a
+href="http://remi.org/2009/01/29/introducing-rackbox_merb-esque-blackbox-testing-for-rack-and-rails-apps.html">Screencast</a>
+</p>
+<h2>Installation</h2>
+<pre>
+    $ sudo gem install remi-rackbox -s http://gems.github.com
+</pre>
+<p>
+NOTE: right now, <a href="../classes/RackBox.html">RackBox</a> requires
+thin. Soon, I&#8216;ll likely remove thin as a dependency and will only
+require rack.
+</p>
+<h2>Rails (fast!)</h2>
+<pre>
+    $ sudo gem install rspec rspec-rails thin
+    $ sudo gem install remi-rackbox -s http://gems.github.com
+
+    $ rails new_app
+    $ cd new_app
+    $ ./script/generate rspec
+    $ ./script/generate blackbox_spec Home Page
+
+    $ rake spec
+</pre>
+<h2>Rails (manual)</h2>
+<p>
+To write <a href="../classes/RackBox.html">RackBox</a> tests in Rails apps,
+make a `blackbox` directory under your `spec` directory and add this to the
+Spec configure block in your `spec_helper.rb` file:
+</p>
+<pre>
+    config.use_blackbox = true
+</pre>
+<p>
+Also, add `require &#8216;rackbox&#8217;` to the top of your
+`spec_helper.rb`
+</p>
+<p>
+You can see a working example of blackbox testing a Rails application here:
+examples/rails](<a
+href="http://github.com/remi/rackbox/tree/master/examples/rails">github.com/remi/rackbox/tree/master/examples/rails</a>)
+</p>
+<h2><a href="../classes/Rack.html">Rack</a></h2>
+<p>
+To write <a href="../classes/RackBox.html">RackBox</a> tests in <a
+href="../classes/Rack.html">Rack</a> apps, I&#8216;m currently assuming
+that you have a `config.ru` rackup file. If so, your app should load,
+otherwise you can explicitly configure <a
+href="../classes/RackBox.html">RackBox</a> to read your <a
+href="../classes/Rack.html">Rack</a> app:
+</p>
+<pre>
+    RackBox.app = your Rack app]
+</pre>
+<p>
+Basides that, the configuration is the same as Rails. Make a `blackbox`
+directory under your `spec` directory and add this to the Spec configure
+block in your `spec_helper.rb` file:
+</p>
+<pre>
+    config.use_blackbox = true
+</pre>
+<p>
+Also, add `require &#8216;rackbox&#8217;` to the top of your
+`spec_helper.rb`
+</p>
+<p>
+You can see a working example of blackbox testing a <a
+href="../classes/Rack.html">Rack</a> application here: examples/rack](<a
+href="http://github.com/remi/rackbox/tree/master/examples/rack">github.com/remi/rackbox/tree/master/examples/rack</a>)
+</p>
+<p>
+NOTE: If you want to be able to use nice RSpec matchers like
+`request(&#8217;/&#8217;).should have_tag(&#8216;p&#8217;)` in your
+blackbox specs in your <a href="../classes/Rack.html">Rack</a> apps, you
+should `sudo gem install webrat` and <a
+href="../classes/RackBox.html">RackBox</a> will include Webrat&#8216;s
+helpers in your specs.
+</p>
+<h2>Usage</h2>
+<p>
+Ideally, the usage of <a href="../classes/RackBox.html">RackBox</a> should
+be identical to Merb-style blackbox testing. I need to find good
+documentation on how things work in Merb so I can duplicate any
+functionality I&#8216;m missing. For now, it&#8216;s really simple!
+</p>
+<pre>
+    describe Foo do
+
+      it 'should have foxes on the home page' do
+        request('/').body.should include('Foxes')
+      end
+
+      it 'should let me know that I was logged in' do
+        response = request(login_path, :method =&gt; :post, :params =&gt; { 'user' =&gt; 'bob', :password =&gt; 'secret' })
+        response.body.should include('Welcome bob, you were successfully logged in!')
+      end
+
+    end
+</pre>
+<p>
+`request` gives you a `Rack::Response`](<a
+href="http://rack.rubyforge.org/doc/classes/Rack/Response.html">rack.rubyforge.org/doc/classes/Rack/Response.html</a>)
+which has `body`, `headers`, `status` methods (and more](<a
+href="http://rack.rubyforge.org/doc/classes/Rack/Response.html">rack.rubyforge.org/doc/classes/Rack/Response.html</a>))
+</p>
+<h2>TODO</h2>
+<ul>
+<li>request(&#8217;/&#8217;, :data =&gt; &#8216;some XML or something&#8217;)
+
+</li>
+<li>request(&#8217;/&#8217;, :format =&gt; :json) # simple helpers for content
+type request accepts
+
+</li>
+<li>request(&#8217;/&#8217;, &#8216;Content-Length&#8217; =&gt;
+&#8216;x&#8217;) # anything passed in that we don&#8216;t handle, throw
+into the request ENV &#8230; but :content_length should work too?
+
+</li>
+<li>get usage documentation working for `./script/generate blackbox_spec`
+
+</li>
+</ul>
+
+    </div>
+
+
+   </div>
+
+
+  </div>
+
+
+    <!-- if includes -->
+
+    <div id="section">
+
+
+
+
+
+      
+
+
+    <!-- if method_list -->
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>
