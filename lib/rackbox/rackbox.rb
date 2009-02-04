@@ -10,7 +10,9 @@
 #
 class RackBox
 
+  # i am an rdoc comment on RackBox's eigenclass
   class << self
+
     # the Rack appliction to do 'Black Box' testing against
     #
     # To set, in your spec_helper.rb or someplace:
