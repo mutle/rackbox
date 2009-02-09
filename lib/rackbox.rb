@@ -14,6 +14,7 @@ require 'rackbox/rack/sticky_sessions'
 require 'rackbox/rack/extensions_for_rspec'
 
 require 'rackbox/rackbox'
+require 'rackbox/app'
 
 require 'rspec/custom_matcher'
 require 'rackbox/matchers'

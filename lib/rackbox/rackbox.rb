@@ -13,6 +13,49 @@ class RackBox
   # i am an rdoc comment on RackBox's eigenclass
   class << self
 
+    # A port of Merb's request() method, used in tests
+    #
+    # At the moment, we're using #req instead because #request conflicts 
+    # with an existing RSpec-Rails method
+    #
+    # Usage:
+    #   
+    #   req '/'
+    #   req login_path
+    #   req url_for(:controller => 'login')
+    #
+    #   req '/', :method => :post, :params => { 'chunky' => 'bacon' }
+    #
+    # TODO support inner hashes, so { :foo => { :chunky => :bacon } } becomes 'foo[chunky]=bacon'
+    #
+    # TODO take any additional options and pass them along to the environment, so we can say 
+    #      req '/', :user_agent => 'some custom user agent'
+    #
+    def req app_or_request, url, options = {}
+
+      # need to find the request or app
+      mock_request = nil
+      if app_or_request.is_a? Rack::MockRequest
+        mock_request = app_or_request
+      elsif app_or_request.nil?
+        if RackBox.app.nil?
+          raise "Not sure howto to execute a request against app or request: #{ app_or_request.inspect }"
+        else
+          mock_request = Rack::MockRequest.new(RackBox.app) # default to RackBox.app if nil
+        end
+      elsif app_or_request.respond_to? :call
+        mock_request = Rack::MockRequest.new(app_or_request)
+      else
+        raise "Not sure howto to execute a request against app or request: #{ app_or_request.inspect }"
+      end
+
+      options[:method] ||= (options[:params]) ? :post : :get # if params, default to POST, else default to GET
+      options[:params] ||= { }
+      mock_request.send options[:method], url, :input => RackBox.build_query(options[:params])
+    end
+
+    alias request req unless defined? request
+
     # the Rack appliction to do 'Black Box' testing against
     #
     # To set, in your spec_helper.rb or someplace:
