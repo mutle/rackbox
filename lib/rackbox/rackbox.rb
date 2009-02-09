@@ -26,7 +26,7 @@ class RackBox
     #
     #   req '/', :method => :post, :params => { 'chunky' => 'bacon' }
     #
-    # TODO support inner hashes, so { :foo => { :chunky => :bacon } } becomes 'foo[chunky]=bacon'
+    #   req '/', :data => "some XML data to POST"
     #
     # TODO take any additional options and pass them along to the environment, so we can say 
     #      req '/', :user_agent => 'some custom user agent'
@@ -49,9 +49,18 @@ class RackBox
         raise "Not sure howto to execute a request against app or request: #{ app_or_request.inspect }"
       end
 
-      options[:method] ||= (options[:params]) ? :post : :get # if params, default to POST, else default to GET
+      options[:method] ||= ( options[:params] || options[:data] ) ? :post : :get # if params, default to POST, else default to GET
       options[:params] ||= { }
-      mock_request.send options[:method], url, :input => RackBox.build_query(options[:params])
+
+      if options[:data]
+        # input should be the data we're likely POSTing ... this overrides any params
+        input = options[:data]
+      else
+        # input should be params, if any
+        input = RackBox.build_query options[:params]
+      end
+      
+      mock_request.send options[:method], url, :input => input
     end
 
     alias request req unless defined? request
