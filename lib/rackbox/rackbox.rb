@@ -13,6 +13,10 @@ class RackBox
   # i am an rdoc comment on RackBox's eigenclass
   class << self
 
+    # to turn on some verbosity / logging, set:
+    #   RackBox.verbose = true
+    attr_accessor :verbose
+
     # A port of Merb's request() method, used in tests
     #
     # At the moment, we're using #req instead because #request conflicts 
@@ -32,6 +36,7 @@ class RackBox
     #      req '/', :user_agent => 'some custom user agent'
     #
     def req app_or_request, url, options = {}
+      puts "RackBox#request url:#{ url.inspect }, options:#{ options.inspect }" if RackBox.verbose
 
       # need to find the request or app
       mock_request = nil
@@ -68,6 +73,7 @@ class RackBox
       # merge input
       headers[:input] = input
       
+      puts "  requesting #{ options[:method].to_s.upcase } #{ url.inspect } #{ headers.inspect }" if RackBox.verbose
       mock_request.send options[:method], url, headers
     end
 
