@@ -59,8 +59,16 @@ class RackBox
         # input should be params, if any
         input = RackBox.build_query options[:params]
       end
+
+      headers = options.dup
+      headers.delete :data   if headers[:data]
+      headers.delete :params if headers[:params]
+      headers.delete :method if headers[:method]
       
-      mock_request.send options[:method], url, :input => input
+      # merge input
+      headers[:input] = input
+      
+      mock_request.send options[:method], url, headers
     end
 
     alias request req unless defined? request
