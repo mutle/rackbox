@@ -92,6 +92,7 @@ TODO
 
  - request('/', :format => :json)          # simple helpers for content type request accepts
  - get usage documentation working for `./script/generate blackbox_spec`
+ - refactor all specs ... an app should implement a simple API that we can spec against ... some URIs should return session vars, some request vars, etc
 
 
 
