@@ -14,4 +14,10 @@ describe RackBox, '#request' do
     RackBox.request(@rack_app, '/hello').body.should include('you requested path /hello')
   end
 
+  it "should default to using RackBox.app if an app isn't passed" do
+    lambda { RackBox.request('/hello') }.should raise_error
+    RackBox.app = @rack_app
+    RackBox.request('/hello').body.should include('you requested path /hello')
+  end
+
 end

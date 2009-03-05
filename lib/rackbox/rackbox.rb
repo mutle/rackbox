@@ -35,8 +35,15 @@ class RackBox
     # TODO take any additional options and pass them along to the environment, so we can say 
     #      req '/', :user_agent => 'some custom user agent'
     #
-    def req app_or_request, url, options = {}
+    def req app_or_request, url = nil, options = {}
       puts "RackBox#request url:#{ url.inspect }, options:#{ options.inspect }" if RackBox.verbose
+
+      # handle RackBox.request '/foo'
+      if app_or_request.is_a?(String) && ( url.nil? || url.is_a?(Hash) )
+        options        = url || {}
+        url            = app_or_request
+        app_or_request = RackBox.app
+      end
 
       # need to find the request or app
       mock_request = nil
