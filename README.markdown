@@ -100,6 +100,7 @@ TODO
  - get usage documentation working for `./script/generate blackbox_spec`
  - refactor all specs ... an app should implement a simple API that we can spec against ... some URIs should return session vars, some request vars, etc
  - add a rackbox script for helping to quickly run requests against apps!
+ - add a Rackbox Webrat backend so we can use the helpers to browse around and click buttons and whatnot?  could be yummy!
 
 
 
