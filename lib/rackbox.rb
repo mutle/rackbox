@@ -1,13 +1,8 @@
-# TODO split up into different files!  sheesh!
-
 $:.unshift File.dirname(__FILE__)
-require 'rubygems'
-begin
-  require 'thin' # required for Rails pre Rails 2.3, as Thin has the Rack::Adapter::Rails
-rescue LoadError
-end
 
+require 'rubygems'
 require 'rack'
+require 'rails-rack-adapter' # update this so it's only loaded when/if needed
 
 require 'rackbox/rack/content_length_fix'
 require 'rackbox/rack/sticky_sessions'

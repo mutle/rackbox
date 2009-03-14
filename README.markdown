@@ -90,6 +90,7 @@ on how things work in [Merb][] so I can duplicate any functionality I'm missing.
 TODO
 ----
 
+ - recreate examples so they all follow a SIMPLE spec ... eg. they should all return request headers if you call `/request_headers`
  - get rid of Thin as a dependency!  use rails-rack-adapter
  - get rid of including custom rpsec matchers, use rspec-custom-matchers
  - make the spec module inclusion less magical!  refactor the spec helpers out ... make it more explicit to include the spec helpers?
@@ -98,6 +99,7 @@ TODO
  - request('/', :format => :json)          # simple helpers for content type request accepts
  - get usage documentation working for `./script/generate blackbox_spec`
  - refactor all specs ... an app should implement a simple API that we can spec against ... some URIs should return session vars, some request vars, etc
+ - add a rackbox script for helping to quickly run requests against apps!
 
 
 
