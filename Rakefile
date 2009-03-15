@@ -12,10 +12,11 @@ begin
     s.homepage    = "http://github.com/remi/rackbox"
     s.description = "Merb-like BlackBox testing for Rack apps, including Rails"
     s.authors     = %w( remi )
-    s.files       = FileList["[A-Z]*", "{lib,spec,examples,rails_generators}/**/*"] 
+    s.files       = FileList["[A-Z]*", "{bin,lib,spec,examples,rails_generators}/**/*"] 
     s.add_dependency 'remi-rails-rack-adapter' 
+    s.add_dependency 'remi-simplecli' 
     # s.add_dependency 'remi-rspec-custom-matchers' 
-    # s.executables = "neato" 
+    s.executables = "rackbox" 
   end
 rescue LoadError
   puts "Jeweler not available. Install it with: sudo gem install technicalpickles-jeweler -s http://gems.github.com"

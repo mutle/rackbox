@@ -96,14 +96,23 @@ class RackBox
 
     def app
       unless @app and @app.respond_to?:call
+        
         if File.file? 'config.ru'
           @app = Rack::Builder.new { eval(File.read('config.ru')) }
+        
         elsif defined?RAILS_ENV and defined?RAILS_ROOT
           raise "You need the Rack::Adapter::Rails to run Rails apps with RackBox." + 
                 " Try: sudo gem install thin" unless defined?Rack::Adapter::Rails
           @app = Rack::Adapter::Rails.new :root => RAILS_ROOT, :environment => RAILS_ENV
+
+        elsif File.file?('config/routes.rb') && File.file?('config/environment.rb')
+          raise "You need the Rack::Adapter::Rails to run Rails apps with RackBox." + 
+                " Try: sudo gem install thin" unless defined?Rack::Adapter::Rails
+          @app = Rack::Adapter::Rails.new :root => '.', :environment => 'development'
+        
         else
           raise "RackBox.app not configured."
+        
         end
       end
       @app

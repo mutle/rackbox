@@ -45,6 +45,7 @@ if spec_configuration_class
                 require 'webrat'
                 require 'webrat/core/matchers'
                 include Webrat::HaveTagMatcher
+                # include Webrat::HasContent
               rescue LoadError
                 puts "Webrat not available.  have_tag & other matchers won't be available.  to install, sudo gem install webrat"
               end
