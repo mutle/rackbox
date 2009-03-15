@@ -87,6 +87,23 @@ on how things work in [Merb][] so I can duplicate any functionality I'm missing.
 `request` gives you a [`Rack::Response`](http://rack.rubyforge.org/doc/classes/Rack/Response.html) which has 
 `body`, `headers`, `status` methods ([and more](http://rack.rubyforge.org/doc/classes/Rack/Response.html))
 
+Script
+------
+
+[RackBox][] also comes with a `rackbox` script.
+
+    # prints usage ... this is all you really need  :)
+    $ rackbox
+
+    # prints out information about the app in the current directory (if found).
+    # this looks like a config.ru or a Rails environment
+    $ rackbox info
+
+    # prints out the response for a call to GET '/' on your application
+    $ rackbox request --method get /foo
+    $ rackbox get /foo
+    $ rackbox /foo
+
 TODO
 ----
 

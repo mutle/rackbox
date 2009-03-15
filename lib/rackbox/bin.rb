@@ -24,7 +24,13 @@ class RackBox::Bin
       rackbox command [options]
 
     Examples:
-      rackbox info             # prints app info
+      rackbox info               # prints app info
+      rackbox commands           # list commands
+      rackbox get /              # request / path
+      rackbox post -d '<XML>' /  # POST data to / path
+      rackbox /                  # GET / 
+      rackbox --data '<XML>'     # POST data to / path
+      rackbox /dogs --xml        # get /dogs, accepting xml
 
     Further help:
       rackbox commands         # list all available commands
