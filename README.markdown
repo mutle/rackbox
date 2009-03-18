@@ -107,18 +107,7 @@ Script
 TODO
 ----
 
- - recreate examples so they all follow a SIMPLE spec ... eg. they should all return request headers if you call `/request_headers`
- - get rid of Thin as a dependency!  use rails-rack-adapter
- - get rid of including custom rpsec matchers, use rspec-custom-matchers
- - make the spec module inclusion less magical!  refactor the spec helpers out ... make it more explicit to include the spec helpers?
- - add test/unit support (the above'll be helpful for this)
- - bugfix: 'request' method makes spec helpers angry!
- - request('/', :format => :json)          # simple helpers for content type request accepts
- - get usage documentation working for `./script/generate blackbox_spec`
- - refactor all specs ... an app should implement a simple API that we can spec against ... some URIs should return session vars, some request vars, etc
- - add a rackbox script for helping to quickly run requests against apps!
- - add a Rackbox Webrat backend so we can use the helpers to browse around and click buttons and whatnot?  could be yummy!
-
+see [RackBox][]'s [Lighthouse Tickets](http://remitaylor.lighthouseapp.com/projects/27570-rackbox)
 
 
 [rackbox]:    http://github.com/remi/rackbox
